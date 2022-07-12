@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nopreplicaset
+  labels:
+    app: nopreplicaset
+    version: 1.0
+spec:
+  minReadySeconds: 3
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nopreplicaset
+      version: 1.0
+    template:
+      metadata:
+        labels:
+          app: nopreplicaset
+          version: 1.0
+      spec:
+        containers:
+          - name: nopcommerce
+            image: rajanikanthraju/nop1:1.0
+            ports:
+              - containerPort: 80
